@@ -12,9 +12,8 @@ GET /api/users - Retrieve a list of all users.
 [
   {
     "id": "ab40cb90-21df-46f2-8eff-7f4fe41f823",
-    "firstName": "Bernado",
-    "surname": "Silva",
-    "registration": "123456787",
+    "fullName": "Bernado Silva",
+    "document": "123456787",
     "email": "bernado@example.com",
     "password": "senha",
     "balance": 20.0,
@@ -22,9 +21,8 @@ GET /api/users - Retrieve a list of all users.
   },
   {
     "id": "821216ac-d2ac-4907-afe1-47f8a91e0dc6",
-    "firstName": "Phill",
-    "surname": "Foden",
-    "registration": "123456783",
+    "fullName": "Phill Foden",
+    "document": "123456783",
     "email": "foden@example.com",
     "password": "password",
     "balance": 0.0,
@@ -44,10 +42,9 @@ POST /api/transactions
 Content-Type: application/json
 
 {
-    "firstName": "Phill",
-    "surname": "Foden",
+    "fullName": "Phill Foden",
     "password": "senha",
-    "registration": "123456783",
+    "document": "123456783",
     "email": "foden@example.com",
     "type": "CUSTOMER",
     "balance": 10
@@ -73,11 +70,11 @@ Authorization: Bearer {{token}}
   "timestamp": "2023-11-09T12:34:56Z",
   "sender": {
     "id": "821216ac-d2ac-4907-afe1-47f8a91e0dc6",
-    "name": "Phill Foden"
+    "fullName": "Phill Foden"
   },
   "receiver": {
     "id": "ab40cb90-21df-46f2-8eff-7f4fe41f823",
-    "name": "Bernado Silva"
+    "fullName": "Bernado Silva"
   }
 }
 ```
