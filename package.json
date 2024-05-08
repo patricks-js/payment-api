@@ -1,16 +1,21 @@
 {
   "name": "payment-api",
   "version": "1.0.50",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "bun run --watch src/index.ts"
+    "start:dev": "bun run --watch src/index.ts",
+    "lint": "biome check --apply .",
+    "prepare": "lefthook install"
   },
   "dependencies": {
     "elysia": "latest"
   },
   "devDependencies": {
     "@biomejs/biome": "1.7.3",
-    "bun-types": "latest"
+    "@commitlint/cli": "^19.3.0",
+    "@commitlint/config-conventional": "^19.2.2",
+    "bun-types": "latest",
+    "lefthook": "^1.6.10"
   },
   "module": "src/index.js"
 }
