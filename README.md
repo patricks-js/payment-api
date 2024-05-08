@@ -15,6 +15,7 @@ The goal of this project is implement a simplified version of a payment service.
 
 ## Table of Contents
 
+- [Roadmap](#roadmap)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Running Tests](#running-tests)
