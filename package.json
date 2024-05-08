@@ -3,7 +3,7 @@
   "version": "1.0.50",
   "type": "module",
   "scripts": {
-    "start:dev": "bun run --watch src/index.ts",
+    "start:dev": "bun run --watch src/main/server.ts",
     "lint": "biome check --apply .",
     "prepare": "lefthook install"
   },
@@ -17,5 +17,5 @@
     "bun-types": "latest",
     "lefthook": "^1.6.10"
   },
-  "module": "src/index.js"
+  "module": "src/main/server.js"
 }
