@@ -1,14 +1,11 @@
 import { randomUUID } from "node:crypto";
+import type { CustomerType } from "@/domain/entities/customer-type";
 import type { UseCase } from "@/domain/protocols/usecase";
 import { password } from "bun";
-import type {
-  CustomerInput,
-  CustomerOutput,
-  ICustomerRepository
-} from "../repositories/customer-repository";
+import type { ICustomerRepository } from "../repositories/customer-repository";
 
 export class RegisterCustomer
-  implements UseCase<CustomerInput, CustomerOutput>
+  implements UseCase<RegisterCustomer.Params, RegisterCustomer.Result>
 {
   readonly #repository: ICustomerRepository;
 
@@ -16,7 +13,7 @@ export class RegisterCustomer
     this.#repository = repository;
   }
 
-  async exec(input: CustomerInput): Promise<CustomerOutput> {
+  async exec(input: RegisterCustomer.Params): Promise<RegisterCustomer.Result> {
     const { email, password: pass } = input;
 
     const userExists = await this.#repository.findByEmail(email);
@@ -25,13 +22,26 @@ export class RegisterCustomer
       throw new Error("User already exists!");
     }
 
-    input.id = randomUUID();
+    const id = randomUUID();
     input.password = await password.hash(pass);
 
-    await this.#repository.create(input);
+    const { customerId } = await this.#repository.create({
+      ...input,
+      id
+    });
 
-    return {
-      customerId: input.id
-    };
+    return customerId;
   }
+}
+
+export namespace RegisterCustomer {
+  export type Params = {
+    fullName: string;
+    document: string;
+    email: string;
+    password: string;
+    type: CustomerType;
+  };
+
+  export type Result = string;
 }
