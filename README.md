@@ -166,11 +166,11 @@ Main specification about this challenger.
 
 ### Functional Requirements
 
-- CUstomer can create an account
-- CUstomer can login to their own account
-- CUstomer can be a customer or a merchant
-- CUstomer can view transaction history
-- CUstomer can update account information
+- Customer can create an account
+- Customer can login to their own account
+- Customer can be a Customer or a merchant
+- Customer can view transaction history
+- Customer can update account information
 - Customers can make a transfer to other customers
 - Customers can receive transfers from other customers
 
