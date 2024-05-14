@@ -2,7 +2,7 @@ import type { Balance } from "./balance";
 import type { CustomerType } from "./customer-type";
 
 export interface Customer {
-  id?: string;
+  id: string;
   fullName: string;
   document: string;
   email: string;
