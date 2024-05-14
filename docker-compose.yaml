@@ -1,0 +1,9 @@
+services:
+  rdbms:
+    container_name: payment-db
+    image: 'bitnami/postgresql:latest'
+    restart: always
+    env_file:
+      - .env.docker
+    ports:
+      - '5432:5432'
