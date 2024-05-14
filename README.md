@@ -17,7 +17,7 @@
 </p>
 
 <p align="center">
-  <b>Simple solution for <a href="https://github.com/PicPay/picpay-desafio-backend">this challenger</a> using Bun.</b>
+  <b>Simple solution for <a href="https://github.com/PicPay/picpay-desafio-backend">this challenger</a> using Bun and Elysia.</b>
 </p>
 
 <h2 id="started">🚀 Getting started</h2>
@@ -34,7 +34,7 @@ You need to have this two main global dependencies installed:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/patricks-js/simplified-payment-api.git
+   git clone https://github.com/patricks-js/payment-api.git
    ```
 
 2. Install dependencies running `bun install`
