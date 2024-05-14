@@ -3,12 +3,16 @@
   "version": "1.0.50",
   "type": "module",
   "scripts": {
-    "start:dev": "bun run --watch src/main/server.ts",
+    "start": "NODE_ENV=production bun src/main/index.ts",
+    "start:dev": "bun --watch src/main/server.ts",
+    "build": "bun build src/index.ts",
+    "test": "bun test",
     "lint": "biome check --apply .",
     "prepare": "lefthook install"
   },
   "dependencies": {
-    "elysia": "latest"
+    "elysia": "latest",
+    "postgres": "^3.4.4"
   },
   "devDependencies": {
     "@biomejs/biome": "1.7.3",
