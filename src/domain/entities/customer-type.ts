@@ -1,4 +1,4 @@
 export enum CustomerType {
-  Customer = "CUSTOMER",
+  Common = "COMMON",
   Merchant = "MERCHANT"
 }
