@@ -22,7 +22,7 @@
 
 <h2 id="started">🚀 Getting started</h2>
 
-The goal of this project is implement a simplified version of a payment service. It should be possible to make transfers between ordinary customers and merchants, and the **merchant only receive transfers**. Ordinary users can make and receive transfers from any other customer.
+The goal of this project is implement a simplified version of a payment service. It should be possible to make transfers between ordinary customers and merchants, and the **merchant only receive transfers**. Ordinary customers can make and receive transfers from any other customer.
 
 ### Installation
 
@@ -66,39 +66,37 @@ bun run test:dev
 
 Here you can list the main routes of your API, and what are their expected request bodies.
 
-**GET USERS**
+**GET CUSTOMERS**
 
 ```markdown
-GET /api/users - Retrieve a list of all users.
+GET /api/customers - Retrieve a list of all customers.
 ```
 
 ```json
 [
   {
-    "id": "ab40cb90-21df-46f2-8eff-7f4fe41f823",
+    "customerId": "ab40cb90-21df-46f2-8eff-7f4fe41f823",
     "fullName": "Bernado Silva",
     "document": "123456787",
     "email": "bernado@example.com",
-    "password": "senha",
     "balance": 20.0,
-    "userType": "MERCHANT"
+    "type": "MERCHANT"
   },
   {
-    "id": "821216ac-d2ac-4907-afe1-47f8a91e0dc6",
+    "customerId": "821216ac-d2ac-4907-afe1-47f8a91e0dc6",
     "fullName": "Phill Foden",
     "document": "123456783",
     "email": "foden@example.com",
-    "password": "password",
     "balance": 0.0,
-    "userType": "COMMON"
+    "type": "COMMON"
   }
 ]
 ```
 
-**POST USERS**
+**POST CUSTOMER**
 
 ```markdown
-POST /api/users - Register a new user into the App
+POST /api/CUSTOMERS - Register a new customer into the App
 ```
 
 ```http request
@@ -118,7 +116,7 @@ Content-Type: application/json
 **POST TRANSACTIONS**
 
 ```markdown
-POST /api/transactions - Register a new Transaction between users (CUSTOMER to CUSTOMER or CUSTOMER to MERCHANT)
+POST /api/transactions - Register a new Transaction between customers (CUSTOMER to CUSTOMER or CUSTOMER to MERCHANT)
 ```
 
 ```http request
@@ -139,11 +137,8 @@ Payload
 
 ```json
 {
-  "status": "ok",
   "transactionId": "1234",
   "amount": 100.0,
-  "currency": "USD",
-  "timestamp": "2023-11-09T12:34:56Z",
   "sender": {
     "id": "821216ac-d2ac-4907-afe1-47f8a91e0dc6",
     "fullName": "Phill Foden"
@@ -167,16 +162,16 @@ Main specification about this challenger.
 - Customers must have sufficient balance to make transfers
 - Transfers must be authorized with an [external service](https://run.mocky.io/v3/5794d450-d2e2-4412-8131-73d0293ac1cc)
 - All transfers are transactions, if any error occurs, the operations is reverted
-- Users should receive a message when a transfer is completed. Check this [mock](https://run.mocky.io/v3/54dc2cf1-3add-45b5-b5a9-6bf7e7f1f4a6)
+- Customers should receive a message when a transfer is completed. Check this [mock](https://run.mocky.io/v3/54dc2cf1-3add-45b5-b5a9-6bf7e7f1f4a6)
 
 ### Functional Requirements
 
-- User can create an account
-- User can login to their own account
-- User can be a customer or a merchant
-- User can view transaction history
-- User can update account information
-- Customers can make a transfer to other users
+- CUstomer can create an account
+- CUstomer can login to their own account
+- CUstomer can be a customer or a merchant
+- CUstomer can view transaction history
+- CUstomer can update account information
+- Customers can make a transfer to other customers
 - Customers can receive transfers from other customers
 
 ### Non-functional Requirements
@@ -184,7 +179,7 @@ Main specification about this challenger.
 - Login with email & password
 - Login with third-part service
 - Notification service with email
-- User's password must be encrypted
+- Customer's password must be encrypted
 - Only refresh tokens must be stored in the database
 - Request must have an access token
 
@@ -193,11 +188,11 @@ Main specification about this challenger.
 The API uses Spring Security for authentication control. The following roles are available:
 
 ```
-CUSTOMER -> Standard user role for logged-in users.
+COMMON -> Standard role for logged-in customers.
 MERCHANT -> Standard role for receive transfers (registering new partners).
 ```
 
-To access protected endpoints as an ADMIN user, provide the appropriate authentication credentials in the request header.
+To access protected endpoints as an ADMIN customer, provide the appropriate authentication credentials in the request header.
 
 <h2 id="contribute">📫 Contribute</h2>
 
