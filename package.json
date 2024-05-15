@@ -1,7 +1,15 @@
 {
   "name": "payment-api",
+  "title": "Simplified Payment API",
+  "description": "Simple solution for a payment api using Bun and Elysia.",
+  "author": {
+    "name": "Lucas Patrick",
+    "email": "tech.patrick.lsilva@gmail.com",
+    "url": "https://github.com/patricks-js"
+  },
   "version": "1.0.50",
   "type": "module",
+  "module": "src/main/server.js",
   "scripts": {
     "start": "NODE_ENV=production bun src/main/index.ts",
     "start:dev": "bun --watch src/main/server.ts",
@@ -11,6 +19,7 @@
     "prepare": "lefthook install"
   },
   "dependencies": {
+    "@elysiajs/swagger": "^1.0.5",
     "elysia": "latest",
     "postgres": "^3.4.4",
     "zod": "^3.23.8"
@@ -21,6 +30,5 @@
     "@commitlint/config-conventional": "^19.2.2",
     "bun-types": "latest",
     "lefthook": "^1.6.10"
-  },
-  "module": "src/main/server.js"
+  }
 }
