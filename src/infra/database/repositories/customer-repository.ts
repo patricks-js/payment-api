@@ -10,6 +10,11 @@ export class CustomerRepository implements ICustomerRepository {
 
     return customer;
   }
+  async findAll(): Promise<Omit<Customer, "password">[]> {
+    return pg<Omit<Customer, "password">[]> /*sql*/`
+      SELECT customer_id as id, full_name, document, email, balance, type FROM tb_customers;
+    `;
+  }
 
   async create(
     input: Omit<Customer, "balance">
