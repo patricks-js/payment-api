@@ -16,12 +16,14 @@
     "build": "bun build src/index.ts",
     "test": "bun test",
     "lint": "biome check --apply .",
-    "prepare": "lefthook install"
+    "prepare": "lefthook install",
+    "migration:run": "bun run ./src/infra/database/migrations.ts"
   },
   "dependencies": {
     "@elysiajs/swagger": "^1.0.5",
     "elysia": "latest",
     "postgres": "^3.4.4",
+    "postgres-migrations": "^5.3.0",
     "zod": "^3.23.8"
   },
   "devDependencies": {
