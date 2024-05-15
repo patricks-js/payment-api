@@ -6,8 +6,5 @@ export type CustomerRequestDTO = {
 };
 
 export type CustomerResponseDTO = {
-  status: number;
-  body: {
-    customerId: string;
-  };
+  customerId: string;
 };

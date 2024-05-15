@@ -7,16 +7,12 @@ import type { ICustomerRepository } from "../repositories/customer-repository";
 export class RegisterCustomer
   implements UseCase<RegisterCustomer.Params, RegisterCustomer.Result>
 {
-  readonly #repository: ICustomerRepository;
-
-  constructor(repository: ICustomerRepository) {
-    this.#repository = repository;
-  }
+  constructor(private readonly repository: ICustomerRepository) {}
 
   async exec(input: RegisterCustomer.Params): Promise<RegisterCustomer.Result> {
     const { email, password: pass } = input;
 
-    const userExists = await this.#repository.findByEmail(email);
+    const userExists = await this.repository.findByEmail(email);
 
     if (userExists) {
       throw new Error("User already exists!");
@@ -25,7 +21,7 @@ export class RegisterCustomer
     const id = randomUUID();
     input.password = await password.hash(pass);
 
-    const { customerId } = await this.#repository.create({
+    const { customerId } = await this.repository.create({
       ...input,
       id
     });

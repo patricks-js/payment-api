@@ -15,6 +15,11 @@ export const registerCustomer = new Elysia().post(
       password: t.String(),
       document: t.String(),
       email: t.String({ format: "email" })
-    })
+    }),
+    response: {
+      201: t.Object({
+        customerId: t.String()
+      })
+    }
   }
 );

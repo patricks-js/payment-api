@@ -18,10 +18,7 @@ export class RegisterUserController
     });
 
     return {
-      status: 201,
-      body: {
-        customerId
-      }
+      customerId
     };
   }
 }
