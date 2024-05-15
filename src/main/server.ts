@@ -2,6 +2,7 @@ import { env } from "@/env";
 import swagger from "@elysiajs/swagger";
 import { Elysia } from "elysia";
 import { description, title, version } from "../../package.json";
+import { getAllCustomers } from "./routes/get-all-customers";
 import { registerCustomer } from "./routes/register-customer";
 
 const app = new Elysia({ prefix: "/api" })
@@ -14,6 +15,7 @@ const app = new Elysia({ prefix: "/api" })
       provider: "swagger-ui"
     })
   )
+  .use(getAllCustomers)
   .use(registerCustomer)
   .get("/", ({ set }) => {
     set.redirect = "/swagger";
