@@ -96,7 +96,7 @@ GET /api/customers - Retrieve a list of all customers.
 **POST CUSTOMER**
 
 ```markdown
-POST /api/CUSTOMERS - Register a new customer into the App
+POST /api/customers - Register a new customer into the App
 ```
 
 ```http request
