@@ -33,4 +33,19 @@ export class CustomerRepository implements ICustomerRepository {
       customerId: returning[0].customer_id
     };
   }
+  async updateBalance(amount: number, customerId: string): Promise<void> {
+    const [customer] = await pg<[Customer]> /*sql*/`
+      SELECT * FROM tb_customers as c WHERE c.customer_id = ${customerId}
+    `;
+
+    if (!customer) {
+      return;
+    }
+
+    await pg /*sql*/`
+      UPDATE tb_customers
+      SET balance = ${amount}
+      WHERE customer_id::text = ${customerId}
+    `;
+  }
 }
