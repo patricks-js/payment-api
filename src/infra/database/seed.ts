@@ -27,6 +27,7 @@ async function seedDatabase() {
     await repository.create(customer);
   }
 
+  pg.end();
   console.log("Database seeded!");
 }
 
