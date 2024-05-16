@@ -41,25 +41,26 @@ You need to have this two main global dependencies installed:
 
 3. Up containers with `docker-compose up`
 
-4. (Optional) For contributing, run `bun run prepare` to sync git hooks
+4. (Optional) For contributing, run `bun prepare` to sync git hooks
 
 ### Usage
 
 1. Start the application running `bun start # or start:dev for development mode`
 2. The API will be accessible at http://localhost:3333
+3. The API **documentation (swagger)** will be accessible at http://localhost:3333/api/swagger
 
 ### Running Tests
 
 To run tests, run the following command
 
 ```bash
-bun run test
+bun test
 ```
 
 To run tests with **watch mode**, run the following command
 
 ```bash
-bun run test:dev
+bun test:dev
 ```
 
 <h2 id="routes">📍 API Endpoints</h2>
