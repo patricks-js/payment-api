@@ -15,14 +15,18 @@
     "lefthook": "^1.6.10"
   },
   "scripts": {
+    "dev": "bun services:up && bun --watch src/main/server.ts",
     "start": "NODE_ENV=production bun src/main/index.ts",
-    "start:dev": "bun --watch src/main/server.ts",
-    "build": "bun build src/index.ts",
     "test": "bun test",
     "lint": "biome check --apply .",
     "migration:run": "bun ./src/infra/database/migrations.ts",
     "migration:seed": "bun ./src/infra/database/seed.ts",
-    "prepare": "lefthook install"
+    "prepare": "lefthook install",
+    "docker:compose": "docker-compose --env-file .env.docker -f docker-compose.yaml",
+    "services:up": "bun docker:compose -- up -d",
+    "services:stop": "bun docker:compose -- stop",
+    "services:down": "bun docker:compose -- down",
+    "services:seed": "kill-port 3333 && bun services:up && bun migration:run && bun migration:seed"
   },
   "name": "payment-api",
   "title": "Simplified Payment API",
