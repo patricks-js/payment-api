@@ -1,25 +1,4 @@
 {
-  "name": "payment-api",
-  "title": "Simplified Payment API",
-  "description": "Simple solution for a payment api using Bun and Elysia.",
-  "author": {
-    "name": "Lucas Patrick",
-    "email": "tech.patrick.lsilva@gmail.com",
-    "url": "https://github.com/patricks-js"
-  },
-  "version": "1.0.50",
-  "type": "module",
-  "module": "src/main/server.js",
-  "scripts": {
-    "start": "NODE_ENV=production bun src/main/index.ts",
-    "start:dev": "bun --watch src/main/server.ts",
-    "build": "bun build src/index.ts",
-    "test": "bun test",
-    "lint": "biome check --apply .",
-    "migration:run": "bun ./src/infra/database/migrations.ts",
-    "migration:seed": "bun ./src/infra/database/seed.ts",
-    "prepare": "lefthook install && bun migration:run && bun migration:seed"
-  },
   "dependencies": {
     "@elysiajs/swagger": "^1.0.5",
     "elysia": "latest",
@@ -34,5 +13,30 @@
     "@faker-js/faker": "^8.4.1",
     "bun-types": "latest",
     "lefthook": "^1.6.10"
+  },
+  "scripts": {
+    "start": "NODE_ENV=production bun src/main/index.ts",
+    "start:dev": "bun --watch src/main/server.ts",
+    "build": "bun build src/index.ts",
+    "test": "bun test",
+    "lint": "biome check --apply .",
+    "migration:run": "bun ./src/infra/database/migrations.ts",
+    "migration:seed": "bun ./src/infra/database/seed.ts",
+    "prepare": "lefthook install"
+  },
+  "name": "payment-api",
+  "title": "Simplified Payment API",
+  "description": "Simple solution for a payment api using Bun and Elysia.",
+  "version": "1.0.50",
+  "type": "module",
+  "module": "src/main/server.js",
+  "author": {
+    "name": "Lucas Patrick",
+    "email": "tech.patrick.lsilva@gmail.com",
+    "url": "https://github.com/patricks-js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/patricks-js/payment-api"
   }
 }
