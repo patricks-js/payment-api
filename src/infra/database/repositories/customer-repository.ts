@@ -27,12 +27,26 @@ export class CustomerRepository implements ICustomerRepository {
       VALUES
         (${id}, ${fullName}, ${document}, ${email}, ${password}, ${type})
       RETURNING customer_id
-      `;
+    `;
 
     return {
       customerId: returning[0].customer_id
     };
   }
+
+  async createAll(input: Omit<Customer, "balance">[]) {
+    for (const customer of input) {
+      const { id, fullName, document, email, password, type } = customer;
+
+      await pg /*sql*/`
+        INSERT INTO tb_customers
+          (customer_id, full_name, document, email, password, type)
+        VALUES
+          (${id}, ${fullName}, ${document}, ${email}, ${password}, ${type})
+      `;
+    }
+  }
+
   async updateBalance(amount: number, customerId: string): Promise<void> {
     const [customer] = await pg<[Customer]> /*sql*/`
       SELECT * FROM tb_customers as c WHERE c.customer_id = ${customerId}

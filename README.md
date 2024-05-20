@@ -39,13 +39,17 @@ You need to have this two main global dependencies installed:
 
 2. Install dependencies running `bun install`
 
-3. Up containers with `docker-compose up`
+3. Up containers with `bun services:up`
 
-4. (Optional) For contributing, run `bun prepare` to sync git hooks
+4. Run migrations with `bun migrations:run`
+
+5. Seed database with `bun migrations:seed`
+
+6. (Optional) For contributing, run `bun prepare` to sync git hooks
 
 ### Usage
 
-1. Start the application running `bun start # or start:dev for development mode`
+1. Start the application running `bun start # or dev for development mode`
 2. The API will be accessible at http://localhost:3333
 3. The API **documentation (swagger)** will be accessible at http://localhost:3333/api/swagger
 

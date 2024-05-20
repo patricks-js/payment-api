@@ -14,21 +14,20 @@ export const customers = Array.from({ length: 5 }).map(() => {
   };
 });
 
-async function seedDatabase() {
-  const repository = new CustomerRepository();
+const repository = new CustomerRepository();
 
+try {
   if ((await repository.findAll()).length > 0) {
-    console.log("Database already have data!");
+    console.log("Database already has data!");
     pg.end();
-    return;
+    process.exit(0);
   }
 
-  for (const customer of customers) {
-    await repository.create(customer);
-  }
+  await repository.createAll(customers);
 
-  pg.end();
   console.log("Database seeded!");
+} catch (error) {
+  console.error("Error seeding database:", error);
+} finally {
+  pg.end();
 }
-
-seedDatabase();

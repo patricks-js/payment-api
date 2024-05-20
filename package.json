@@ -15,7 +15,7 @@
     "lefthook": "^1.6.10"
   },
   "scripts": {
-    "dev": "bun services:up && bun --watch src/main/server.ts",
+    "dev": "bun --watch src/main/server.ts",
     "start": "NODE_ENV=production bun src/main/index.ts",
     "test": "bun test",
     "lint": "biome check --apply .",
@@ -25,8 +25,7 @@
     "docker:compose": "docker-compose --env-file .env.docker -f docker-compose.yaml",
     "services:up": "bun docker:compose -- up -d",
     "services:stop": "bun docker:compose -- stop",
-    "services:down": "bun docker:compose -- down",
-    "services:seed": "kill-port 3333 && bun services:up && bun migration:run && bun migration:seed"
+    "services:down": "bun docker:compose -- down"
   },
   "name": "payment-api",
   "title": "Simplified Payment API",
