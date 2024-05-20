@@ -17,7 +17,7 @@ export const registerBalance = new Elysia().patch(
     };
   },
   {
-    tags: ["customers"],
+    tags: ["customer"],
     params: t.Object({
       id: t.String({ format: "uuid" })
     }),

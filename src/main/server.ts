@@ -13,7 +13,7 @@ const app = new Elysia({ prefix: "/api" })
         info: { title, version, description }
       },
       exclude: ["/api/"],
-      provider: "swagger-ui"
+      provider: "scalar"
     })
   )
   .use(registerCustomer)
