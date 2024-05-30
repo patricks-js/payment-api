@@ -1,1 +1,1 @@
-ALTER TABLE "tb_customers" ADD COLUMN "balance" INTEGER;
+ALTER TABLE "tb_customers" ADD COLUMN "balance" DECIMAL(10,2);

@@ -15,6 +15,7 @@ const config = {
 
 try {
   await migrate(config, path.join(__dirname, "..", "..", "..", "migrations"));
+  console.log("Migrations done!");
 } catch (e) {
   if (e instanceof Error) {
     console.log(e.message);
