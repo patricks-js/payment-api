@@ -1,4 +1,4 @@
-import { pg } from "@/infra/database/postgres";
+import { pg } from "@/database/postgres";
 import type { Customer } from "@/models/customer";
 
 export const customerRepository = {
@@ -57,6 +57,6 @@ export const customerRepository = {
     `;
   },
   async delete(id: string) {
-    await pg /*sql*/`DELETE tb_customers WHERE id LIKE ${id}`;
+    await pg /*sql*/`DELETE FROM tb_customers WHERE id::text = ${id}`;
   }
 };

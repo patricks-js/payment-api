@@ -15,12 +15,12 @@
     "lefthook": "^1.6.10"
   },
   "scripts": {
-    "dev": "bun --watch src/main/server.ts",
+    "dev": "bun --watch src/server.ts",
     "start": "NODE_ENV=production bun src/main/index.ts",
     "test": "bun test",
     "lint": "biome check --apply .",
-    "migration:run": "bun ./src/infra/database/migrations.ts",
-    "migration:seed": "bun ./src/infra/database/seed.ts",
+    "migration:run": "bun ./src/database/migrations.ts",
+    "migration:seed": "bun ./src/database/seed.ts",
     "prepare": "lefthook install",
     "docker:compose": "docker-compose --env-file .env.docker -f docker-compose.yaml",
     "services:up": "bun docker:compose -- up -d",

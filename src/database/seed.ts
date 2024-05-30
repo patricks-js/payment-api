@@ -1,4 +1,4 @@
-import { CustomerType } from "@/domain/entities/customer-type";
+import { CustomerType } from "@/models/customer";
 import { customerRepository } from "@/repositories/customer-repository";
 import { faker } from "@faker-js/faker";
 import { pg } from "./postgres";

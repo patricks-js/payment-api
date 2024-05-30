@@ -7,7 +7,3 @@ CREATE TABLE "tb_transactions"(
 );
 ALTER TABLE
     "tb_transactions" ADD PRIMARY KEY("id");
-ALTER TABLE
-    "tb_transactions" ADD CONSTRAINT "tb_transactions_sender_id_unique" UNIQUE("sender_id");
-ALTER TABLE
-    "tb_transactions" ADD CONSTRAINT "tb_transactions_receiver_id_unique" UNIQUE("receiver_id");

@@ -4,12 +4,15 @@ import Elysia, { t } from "elysia";
 export const registerBalance = new Elysia().patch(
   "/customers/:id/balance",
   async ({ body, params: { id } }) => {
-    const customer = customerRepository.findById(id);
+    const customer = await customerRepository.findById(id);
 
     if (!customer) throw new Error("Customer not found.");
 
     try {
-      await customerRepository.updateBalance(body.amount, id);
+      await customerRepository.updateBalance(
+        customer.balance + body.amount,
+        id
+      );
     } catch (e) {
       console.error("Something is wrong.", e);
     }

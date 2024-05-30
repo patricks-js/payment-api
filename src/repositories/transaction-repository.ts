@@ -1,19 +1,17 @@
-import { pg } from "@/infra/database/postgres";
+import { pg } from "@/database/postgres";
 import type { Transaction } from "@/models/transaction";
 
-export class TransactionRepository {
+export const transactionRepository = {
   async findAll() {
     return pg<Transaction[]> /*sql*/`
       SELECT * FROM tb_transactions;
     `;
-  }
-
+  },
   async findById(id: string) {
     return pg<Transaction[]> /*sql*/`
       SELECT * FROM tb_transactions WHERE id::text = ${id};
     `;
-  }
-
+  },
   async create(input: Transaction) {
     const { id, senderId, receiverId, amount, timestamp } = input;
 
@@ -23,4 +21,4 @@ export class TransactionRepository {
         (${id}, ${senderId}, ${receiverId}, ${amount}, ${timestamp})
     `;
   }
-}
+};
